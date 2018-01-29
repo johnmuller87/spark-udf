@@ -1,0 +1,11 @@
+/RUNNING_PID
+/logs/
+/project/*-shim.sbt
+/project/project/
+/project/target/
+/project/BuildSettings
+/target/
+/.idea*
+/*.iml
+/metastore_db
+/derby.log
