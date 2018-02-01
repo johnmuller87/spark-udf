@@ -3,7 +3,7 @@ package com.ing.wbaa.spark.udf
 import org.scalatest.{FlatSpec, Matchers}
 
 class ValidateIBANSpec extends FlatSpec with Matchers {
-  private val udf = ValidateIBAN
+  private val udf = new ValidateIBAN
 
   "ValidateIBAN.evaluate" should "return true for valid IBANs" in {
     val data = Array(
@@ -69,7 +69,7 @@ class ValidateIBANSpec extends FlatSpec with Matchers {
 
     for (input <- data) {
       withClue(s"IBAN: $input validation returned ") {
-        udf.evaluate(input) should be(true)
+        udf.call(input) should be(true)
       }
     }
   }
@@ -84,7 +84,7 @@ class ValidateIBANSpec extends FlatSpec with Matchers {
     )
     for (input <- data) {
       withClue(s"IBAN: $input validation returned ") {
-        udf.evaluate(input) should be(false)
+        udf.call(input) should be(false)
       }
     }
   }
