@@ -35,11 +35,11 @@ for Scala 2.11. That jars will be:
 ## Using UDF in Spark
 You can now register the UDF in Spark with the following line:
 ```
-spark._jvm.com.ing.wbaa.spark.udf.ValidateIBAN.registerUDF(spark._jsparkSession)
+spark.udf.registerJavaFunction("ValidateIBAN", "com.ing.wbaa.spark.udf.ValidateIBAN", T.BooleanType())
 ```
 You can now use the function as you would any other function:
 ```
-spark.sql("""SELECT validate_iban('NL20INGB0001234567')""").show()
+spark.sql("""SELECT ValidateIBAN('NL20INGB0001234567')""").show()
 ```
 [Apache Spark]: http://spark.apache.org
 [SBT]: http://scala-sbt.org
